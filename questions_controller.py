@@ -51,8 +51,16 @@ class QuestionController:
         self.answers_list.addItem(question.question)
 
 
-    def remove_answer(self, id):
-        pass
+    def remove_answer(self, question_text):
+        for question in self.questions:
+            if question.question == question_text:
+                self.questions.remove(question)
+                break
+        
+        self.answers_list.clear()
+
+        for question in self.questions:
+            self.answers_list.addItem(question.question)
 
     def check_is_right_answer(self):
-        return self.answer_buttons[0].isCheked()
+        return self.answer_buttons[0].isChecked()
